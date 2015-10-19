@@ -20,7 +20,7 @@ function drawTop3(data){
             if(data[i].image.length > 0){
                 html = html +             '<img src="'+data[i].image+'" class="header-img-click" align="left">'
             }
-            html = html +             '<span>'+data[i].msg+'</span>'
+            html = html +             '<div class="header-content"><span>'+data[i].msg+'</span></div>'
             html = html +         '</div>'
             html = html +     '</div>'
             html = html + '</div>'
@@ -56,7 +56,7 @@ function drawTalks(data){
         html = html +         '<div class="box-info">'
         html = html +             '<div class="box-date">'+getFormatDate(data[i].date)+'</div>'
         html = html +             '<div class="box-add-reply">댓글</div>'
-        html = html +             '<div class="box-unlike">Bad <span>'+data[i].unlike+'</span></div>'
+        html = html +             '<div class="box-dislike">Bad <span>'+data[i].dislike+'</span></div>'
         html = html +             '<div class="box-like">Good <span>'+data[i].like+'</span></div>'
         html = html +         '</div>'
         html = html +     '</div>'

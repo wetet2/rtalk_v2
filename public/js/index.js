@@ -56,6 +56,11 @@ function init() {
         var count = $(this).children('span');
         if (canLike) {
             canLike = false;
+
+            setTimeout(function() {
+                canLike = true
+            }, 3000);
+
             $.ajax({
                 type: 'post',
                 contentType: 'application/json',
@@ -71,25 +76,23 @@ function init() {
                 }
             });
         }
-        setTimeout(function() {
-            canLike = true
-        }, 3000);
+
     });
 
-    var canUnlike = true;
-    $('.box-unlike').click(function() {
+    var canDislike = true;
+    $('.box-dislike').click(function() {
         var count = $(this).children('span');
-        if (canUnlike) {
-            canUnlike = false;
+        if (canDislike) {
+            canDislike = false;
             $.ajax({
                 type: 'post',
                 contentType: 'application/json',
-                url: '/unlike',
+                url: '/dislike',
                 data: JSON.stringify({
                     id: $(this).closest('.box').attr('id')
                 }),
                 success: function(data) {
-                    count.html(data.unlike);
+                    count.html(data.dislike);
                 },
                 error: function(e) {
                     console.error(e);
@@ -97,7 +100,7 @@ function init() {
             });
         }
         setTimeout(function() {
-            canUnlike = true
+            canDislike = true
         }, 3000);
     });
 
@@ -173,13 +176,14 @@ function showAttachedImageIcon(yn) {
 
 }
 
+
 $(function() {
 
     var submitOpts = { target: '#formSave', success: afterSubmit}
 
     Autolinker.prototype.twitter = false;
     $('#myCarousel').carousel({
-        interval: 10000
+        interval: 0
     });
 
 
@@ -190,8 +194,11 @@ $(function() {
 
     $('#btnGo').click(function() {
         var msg = $('#inputTextOri').val();
+        if(msg.trim().length == 0 && $('#inputImage').length == 0){
+            return false;
+        }
         msg = Autolinker.link(msg, {
-            truncate: 20,
+            truncate: 15,
             stripPrefix: true
         });
         $('#inputText').val(msg);
@@ -242,7 +249,5 @@ $(function() {
     })
 
     refresh(true);
-
-
 
 })

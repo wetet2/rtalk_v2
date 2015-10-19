@@ -60,7 +60,7 @@ router.post('/save', function(req, res, next) {
                 data.image = imgUrl;
                 data.date = getCurrentDate();
                 data.like = 0;
-                data.unlike = 0;
+                data.dislike = 0;
 
                 insertTalk(data);
             }
@@ -77,8 +77,8 @@ router.post('/like', function(req, res) {
     like(res, req.body.id);
 });
 
-router.post('/unlike', function(req, res) {
-    unlike(res, req.body.id);
+router.post('/dislike', function(req, res) {
+    dislike(res, req.body.id);
 });
 
 function like(res, id) {
@@ -109,7 +109,7 @@ function like(res, id) {
     })
 }
 
-function unlike(res, id) {
+function dislike(res, id) {
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;
@@ -118,7 +118,7 @@ function unlike(res, id) {
                     _id: new ObjectID(id)
                 }, {
                     $inc: {
-                        unlike: 1
+                        dislike: 1
                     }
                 },
                 function(err, result) {
@@ -126,7 +126,7 @@ function unlike(res, id) {
                         _id: new ObjectID(id)
                     }).toArray(function(err, docs) {
                         res.status(200).send({
-                            unlike: docs[0].unlike
+                            dislike: docs[0].dislike
                         });
                         db.close();
                     });

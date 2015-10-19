@@ -43,7 +43,8 @@
 
 .box img {
     width: 100%;
-    max-height: 100%;
+    height: 100%;
+    max-height: 500px;
     border: 1px #dddddd solid;
 }
 
@@ -73,7 +74,7 @@
     padding-left: 5px;
     cursor: pointer;
 }
-.box-unlike {
+.box-dislike {
     float: right;
     font-size: 0.8em;
     color: rgb(215, 107, 87);
@@ -251,7 +252,6 @@
 .arrow-up{
     background-image: url('/img/arrow_up.png');
 }
-
 
 
 form {
