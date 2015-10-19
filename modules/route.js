@@ -136,6 +136,7 @@ function dislike(res, id) {
     })
 }
 
+
 function findAll(res) {
     client.connect(dbUrl, function(err, db) {
         if (err) {
