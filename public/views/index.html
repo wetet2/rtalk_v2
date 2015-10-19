@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>RTalk Fragment</title>
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/carousel.css" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.ico">
+    <link href="/css/index.css" rel="stylesheet" />
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/Autolinker.js/dist/Autolinker.js"></script>
+    <script src="/js/draw.js"></script>
+    <script src="/js/index.js"></script>
+
+</head>
+
+<body>
+    <div id="divTitle">RTalk Fragment<img src="/img/loading.gif"></div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+        </ol>
+        <div class="carousel-inner" role="listbox">
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div id="divInput">
+        <div class="message left">
+            <input type="text" id="inputTextOri" maxlength="100" placeholder="Message...100 characters limit">
+            <div class="attached-image"></div>
+        </div>
+        <label id="btnImage" class="button-mid bg-color1" title="upload image">
+            <span><img src="/img/image.png"></span>
+        </label>
+        <label id="btnGo" class="button-mid no-border bg-color2" title="save message">
+            <span><img src="/img/write.png" ></span>
+        </label>
+        <form method="post" enctype="multipart/form-data" action="/save">
+            <input type="text" name="inputText" id="inputText" />
+            <input type="text" name="inputId" id="inputId" />
+            <input type="submit" id="inputSubmit" />
+        </form>
+    </div>
+
+    <div class="wall-outer">
+    </div>
+
+
+
+</body>
+
+</html>

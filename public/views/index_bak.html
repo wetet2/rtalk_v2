@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>RTalk Fragment</title>
+
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/carousel.css" rel="stylesheet">
+    <link rel="icon" href="/img/favicon.ico">
+    <link href="/css/index.css" rel="stylesheet" />
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/Autolinker.js/dist/Autolinker.min.js"></script>
+    <script src="/js/index.js"></script>
+
+</head>
+
+<body>
+    <div id="divTitle">RTalk Fragment</div>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <img src="http://t1.daumcdn.net/news/201509/16/ZDNetKorea/20150916091354792ddje.jpg" align="left"> 이젠 알 것 같아요. 나만이 앓고 있는 지독히 깊은 그대라는 상처가.얼마만큼 참아내기 힘든지 한잔 술이 밤을 마취할뿐. 내 온몸에 너무 퍼져버린 추억은 이제 손쓸 수가 없어서 내 온몸에 너무 퍼져버린 추억은 이제 손쓸 수가 없어서
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <img src="http://media.byhands.no/media/images/projectimages/184/o/f27536f2-5835-4da8-8c99-7e2e3ad91009.jpg" align="left">
+                        <p>새누리당은 전날 국회에서 역사교과서 발행 체제를 의제로 교육부와 첫 당정협의회를 열어 교과서의 발행체제를 국정으로 전환할 것을 공식적으로 요구한 바 있다. 반면 새정치민주연합은 장외투쟁을 비롯한 '모든 수단'을 동원해 국정화를 저지하고 황우여 부총리에 대한 해임 건의안을 제출하겠다고 밝힌 상태다.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption">
+                        <img src="http://www.kristianhammerstad.com/images/printedpages_01_thumb.jpg" align="left">
+                        <p>황우여 사회부총리 겸 교육부 장관은 이날 오후 2시 정부세종청사에서 브리핑을</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <div id="divInput">
+        <div class="message left">
+            <input type="text" id="inputTextOri">
+            <div class="attached-image"></div>
+        </div>
+        <label id="btnImage" class="button-mid bg-color1">
+            <span>Img</span>
+        </label>
+        <label id="btnGo" class="button-mid no-border bg-color2">
+            <span>Go</span>
+        </label>
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <input type="text" name="inputText" id="inputText"/>
+            <input type="submit" id="inputSubmit" />
+        </form>
+    </div>
+
+    <div class="wall-outer">
+        <div class="wall">
+            <div class="box">
+                <div class="message-wrapper">
+                    <p>11넌센스퀴즈1.아이를 셋 낳은 계획을 세운다 (4글자로) - 미래에셋2. 누룽지가 영어로 뭘까요? (5글자) - 바비브라운</p>
+                    <div class="box-info">
+                        <div class="box-date">10-21 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+                <div class="reply-wrapper">
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">이상한 나라의 엘리스 보러 가지마 재미없어 <span class="reply-date">10-15 10:38</span></div>
+                    </div>
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">이호윤입니다입니다.일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십
+                            <span class="reply-date">10-15 10:38</span></div>
+                    </div>
+                </div>
+                <div class="reply-wrapper-all">
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">이상한 나라의 엘리스 보러 가지마 재미없어</div>
+                    </div>
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">이호윤입니다입니다.일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</div>
+                    </div>
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">식스센스 보러 가지마 재미없어</div>
+                    </div>
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">터미네이터 보러 가지마 재미없어</div>
+                    </div>
+                </div>
+                <div class="reply-more arrow-down"></div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">
+                    뚫고 나와버려.
+                    <a href="/img/3.jpg" target="_blank"><img onload="refresh()" src="/img/3.jpg"></a>
+                    <div class="box-info">
+                        <div class="box-date">10-22 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+                <div class="reply-wrapper">
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">이호윤입니다입니다.일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십일이삼사오육칠팔구십</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="message-wrapper">
+                    <p>페이스북 슬퍼요 추가됨...</p>
+                    <div class="box-info">
+                        <div class="box-date">10-23 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+                <div class="reply-wrapper">
+                    <div class="reply-wrapper-each">
+                        <div class="reply-header">+</div>
+                        <div class="reply-content">유비케어 주식 오릅니다..아시겠죠?</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="message-wrapper">
+                    <img onload="refresh()" src="http://media.byhands.no/media/images/projectimages/184/o/f27536f2-5835-4da8-8c99-7e2e3ad91009.jpg">
+                    <div class="box-info">
+                        <div class="box-date">10-24 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">
+                    66안녕하세요 이호윤입니다. 새로운 것을 만들고 있습니다.
+                    <div class="box-info">
+                        <div class="box-date">10-25 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">
+                    <img onload="refresh()" src="http://media.byhands.no/media/images/projectimages/261/o/02530490-b0e7-4ab3-b255-68b91f5a6207.jpg">
+                    <div class="box-info">
+                        <div class="box-date">10-26 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">
+                    34URL(Admin) : http://dev.finger-post.com:7000/SFE_Admin/login.jsp 계정 : 2031782 / 없음
+                    <div class="box-info">
+                        <div class="box-date">10-27 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">
+                    44http://soheilshiri.ir/#/bored
+                    <a href="/img/4.jpg" target="_blank"><img onload="refresh()" src="/img/4.jpg"></a>
+                    <div class="box-info">
+                        <div class="box-date">10-28 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">55http://soheilshiri.ir/#/bored
+                    <div class="box-info">
+                        <div class="box-date">10-29 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="message-wrapper">77dlksajflkdjsaklfjdlksajfldjsalkfjdlksajfldkj
+                    <a href="/img/2.jpg" target="_blank"><img onload="refresh()" src="/img/2.jpg"></a>
+                    <div class="box-info">
+                        <div class="box-date">10-30 17:30</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-unlike">싫어요 2</div>
+                        <div class="box-like">좋아요 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

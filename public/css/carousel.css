@@ -1,0 +1,113 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+
+
+/* Padding below the footer and lighter body text */
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+
+/* Carousel base class */
+
+.carousel {
+    height: 200px;
+    /*margin-bottom: 10px;*/
+}
+
+.header-img-click{
+    cursor: pointer;
+}
+/* Since positioning the image, we need to help out the caption */
+
+.carousel-caption {
+    position: absolute;
+    top: 10px;
+    right: 10%;
+    left: 10%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+}
+
+.carousel-caption img{
+    width: 35%;
+    /*max-width: 150px;*/
+    height: 150px;
+    margin: 3px 10px 0px 3px;
+}
+
+.carousel-caption span{
+    width: 63%;
+}
+
+.carousel-control{
+    width: 10%;
+}
+
+.carousel-inner{
+    background-color: #002F4A;
+}
+
+.carousel-indicators{
+    bottom: -13px;
+    transform: scale(0.8);
+}
+
+.carousel-indicators li{
+    /*margin: 0px 5px 0px 0px;*/
+}
+
+/* Declare heights because of positioning of img element */
+
+.carousel .item {
+    height: 200px;
+    background-color: #002F4A;
+}
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+    /* Navbar positioning foo */
+    .navbar-wrapper {
+        margin-top: 20px;
+    }
+    .navbar-wrapper .container {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .navbar-wrapper .navbar {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* The navbar becomes detached from the top, so we round the corners */
+    .navbar-wrapper .navbar {
+        border-radius: 4px;
+    }
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 20px;
+        font-size: 21px;
+        line-height: 1.4;
+    }
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+@media (min-width: 992px) {
+    .featurette-heading {
+        margin-top: 120px;
+    }
+}

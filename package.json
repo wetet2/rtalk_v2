@@ -1,0 +1,24 @@
+{
+  "name": "rtalk_fragment",
+  "version": "1.0.0",
+  "description": "rtalk v2",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "ejs": "^2.3.3",
+    "body-parser": "^1.13.3",
+    "formidable": "^1.0.17",
+    "mongodb": "^2.0.45",
+    "path": "^0.11.14"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "rtalk"
+  ],
+  "author": "HoyoonLee",
+  "license": "ISC"
+}
