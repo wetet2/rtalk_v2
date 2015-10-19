@@ -8,7 +8,7 @@ function init() {
 
     });
 
-    $('.header-img-click').click(function(e){
+    $('.header-img-click').click(function(e) {
         var imgUrl = $(this).attr('src');
         window.open(imgUrl);
     })
@@ -60,11 +60,13 @@ function init() {
                 type: 'post',
                 contentType: 'application/json',
                 url: '/like',
-                data: JSON.stringify({id: $(this).closest('.box').attr('id')}),
+                data: JSON.stringify({
+                    id: $(this).closest('.box').attr('id')
+                }),
                 success: function(data) {
                     count.html(data.like);
                 },
-                error: function(e){
+                error: function(e) {
                     console.error(e);
                 }
             });
@@ -83,11 +85,13 @@ function init() {
                 type: 'post',
                 contentType: 'application/json',
                 url: '/unlike',
-                data: JSON.stringify({id: $(this).closest('.box').attr('id')}),
+                data: JSON.stringify({
+                    id: $(this).closest('.box').attr('id')
+                }),
                 success: function(data) {
                     count.html(data.unlike);
                 },
-                error: function(e){
+                error: function(e) {
                     console.error(e);
                 }
             });
@@ -97,7 +101,7 @@ function init() {
         }, 3000);
     });
 
-    $('.box img').load(function(){
+    $('.box img').load(function() {
         $('.wall').masonry();
     })
 
@@ -106,17 +110,18 @@ function init() {
     startReloadTimer();
 }
 
-function startReloadTimer(){
-    setInterval(function(){
+function startReloadTimer() {
+    setInterval(function() {
         window.location.reload();
     }, 61 * 1000);
 }
 var refreshTimer;
-function startRefreshTimer(){
-    if(refreshTimer){
+
+function startRefreshTimer() {
+    if (refreshTimer) {
         clearInterval(refreshTimer);
     }
-    refreshTimer = setInterval(function(){
+    refreshTimer = setInterval(function() {
         refresh();
     }, 15 * 1000);
 }
@@ -127,21 +132,23 @@ function refresh(isFirst) {
         contentType: 'application/json',
         url: '/getTalks',
         success: function(data) {
-            if(isFirst){
+            if (isFirst) {
                 drawTop3(data.top3);
             }
             drawTalks(data.all);
             init();
         },
-        error: function(e){
+        error: function(e) {
             console.error(e);
         }
     });
 }
-function rearrangeMasonry(){
+
+function rearrangeMasonry() {
     $('.wall').masonry();
 }
-function initMasonry(){
+
+function initMasonry() {
     var option = {
         itemSelector: '.box',
         percentPosition: true,
@@ -168,10 +175,16 @@ function showAttachedImageIcon(yn) {
 
 $(function() {
 
-    Autolinker.prototype.twitter = false;
-    $('#myCarousel').carousel({interval: 10000});
+    var submitOpts = { target: '#formSave', success: afterSubmit}
 
-    $('#divTitle').click(function(){
+    Autolinker.prototype.twitter = false;
+    $('#myCarousel').carousel({
+        interval: 10000
+    });
+
+
+
+    $('#divTitle').click(function() {
         refresh();
     });
 
@@ -186,8 +199,14 @@ $(function() {
         if ($('#inputImage').val() == '') {
             $('#inputImage').remove();
         }
-        $('form').submit();
+
+        $('form').submit()
+
     })
+
+    function afterSubmit(res){
+        console.log('afterSubmit');
+    }
 
     $('#btnImage').click(function() {
         if ($('#inputImage').length == 0) {
@@ -210,8 +229,8 @@ $(function() {
         $('#inputImage').click();
     });
 
-    $('#inputTextOri').keydown(function(e){
-        if(e.keyCode === 13){
+    $('#inputTextOri').keydown(function(e) {
+        if (e.keyCode === 13) {
             $('#btnGo').click();
         }
     });

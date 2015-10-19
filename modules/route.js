@@ -7,85 +7,99 @@ var ObjectID = require('mongodb').ObjectID;
 var dbUrl = 'mongodb://localhost:27017/local';
 
 
-router.get('/',function(req, res){
-    res.render('index.html', {imgUrl:''});
+router.get('/', function(req, res) {
+    res.render('index.html', {
+        imgUrl: ''
+    });
 });
 
-router.get('/with/:imgUrl',function(req, res){
+router.get('/with/:imgUrl', function(req, res) {
 
     // res.render('index.html');
-    res.render('index.html', {imgUrl: req.params.imgUrl});
+    res.render('index.html', {
+        imgUrl: req.params.imgUrl
+    });
 
     // if(req.params.imgUrl != 'favicon.ico'){
     //     res.render(req.params.page + '.html');
     // }
 });
 
-router.post('/save', function(req, res){
+router.post('/save', function(req, res, next) {
 
-    var form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.uploadDir = __dirname + '/../public/img/upload';
+    var fileSize = parseInt(req.headers['content-length']);
+    if(fileSize > 2100000){
+        res.status(200).send('최대 2M 업로드 가능합니다');
+    }else{
 
-    form.parse(req, function(err, fields, files){
-        if(err){
-            throw err;
-        }
-
-        // console.log(fields);
-        // console.log(files);
-
-        if(fields.inputText.indexOf('@reply:') == 0){
-            var reply = {};
-            reply.msg = fields.inputText.replace('@reply:','');
-            reply.date = getCurrentDate();
-            insertReply(reply, fields.inputId);
-
-        }else{
-            var data = {};
-            data.msg = fields.inputText;
-
-            var imgUrl = '';
-            if(files.inputImage){
-                var path = files.inputImage.path;
-                path = path.replace('/\\/g','/');
-                var fileName = path.substr(path.lastIndexOf('/'), path.length);
-                imgUrl = '/img/upload' + fileName;
+        var form = new formidable.IncomingForm();
+        form.keepExtensions = true;
+        form.uploadDir = __dirname + '/../public/img/upload';
+        form.parse(req, function(err, fields, files) {
+            if (err) {
+                throw err;
             }
-            data.image = imgUrl;
-            data.date = getCurrentDate();
-            data.like = 0;
-            data.unlike = 0;
 
-            insertTalk(data);
-        }
-        res.redirect('/');
-    });
+            if (fields.inputText.indexOf('@reply:') == 0) {
+                var reply = {};
+                reply.msg = fields.inputText.replace('@reply:', '');
+                reply.date = getCurrentDate();
+                insertReply(reply, fields.inputId);
+
+            } else {
+                var data = {};
+                data.msg = fields.inputText;
+
+                var imgUrl = '';
+                if (files.inputImage) {
+                    var path = files.inputImage.path;
+                    path = path.replace('/\\/g', '/');
+                    var fileName = path.substr(path.lastIndexOf('/'), path.length);
+                    imgUrl = '/img/upload' + fileName;
+                }
+                data.image = imgUrl;
+                data.date = getCurrentDate();
+                data.like = 0;
+                data.unlike = 0;
+
+                insertTalk(data);
+            }
+            res.redirect('/');
+        });
+    }
 });
 
-router.post('/getTalks', function(req, res){
+router.post('/getTalks', function(req, res) {
     findAll(res);
 });
 
-router.post('/like', function(req, res){
+router.post('/like', function(req, res) {
     like(res, req.body.id);
 });
 
-router.post('/unlike', function(req, res){
+router.post('/unlike', function(req, res) {
     unlike(res, req.body.id);
 });
 
-function like(res, id){
-    client.connect(dbUrl, function(err, db){
-        if(err){
+function like(res, id) {
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
             throw err;
-        }else{
-            db.collection('talks').update(
-                {_id: new ObjectID(id)},
-                {$inc: {like: 1}},
-                function(err, result){
-                    db.collection('talks').find({_id: new ObjectID(id)}).toArray(function(err, docs){
-                        res.status(200).send({like:docs[0].like});
+        } else {
+            db.collection('talks').update({
+                    _id: new ObjectID(id)
+                }, {
+                    $inc: {
+                        like: 1
+                    }
+                },
+                function(err, result) {
+                    db.collection('talks').find({
+                        _id: new ObjectID(id)
+                    }).toArray(function(err, docs) {
+                        res.status(200).send({
+                            like: docs[0].like
+                        });
                         db.close();
                     });
                 }
@@ -95,17 +109,25 @@ function like(res, id){
     })
 }
 
-function unlike(res, id){
-    client.connect(dbUrl, function(err, db){
-        if(err){
+function unlike(res, id) {
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
             throw err;
-        }else{
-            db.collection('talks').update(
-                {_id: new ObjectID(id)},
-                {$inc: {unlike: 1}},
-                function(err, result){
-                    db.collection('talks').find({_id: new ObjectID(id)}).toArray(function(err, docs){
-                        res.status(200).send({unlike:docs[0].unlike});
+        } else {
+            db.collection('talks').update({
+                    _id: new ObjectID(id)
+                }, {
+                    $inc: {
+                        unlike: 1
+                    }
+                },
+                function(err, result) {
+                    db.collection('talks').find({
+                        _id: new ObjectID(id)
+                    }).toArray(function(err, docs) {
+                        res.status(200).send({
+                            unlike: docs[0].unlike
+                        });
                         db.close();
                     });
                 }
@@ -114,65 +136,88 @@ function unlike(res, id){
     })
 }
 
-function findAll(res){
-    client.connect(dbUrl, function(err, db){
-        if(err){
+function findAll(res) {
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
             throw err;
-        }else{
+        } else {
             db.collection('talks').find({})
-                .sort({'date.year':-1, 'date.month':-1, 'date.day':-1, 'date.hour':-1, 'date.min':-1, 'date.sec':-1})
-                .toArray(function(err, docs){
-                    if(err){
+                .sort({
+                    'date.year': -1,
+                    'date.month': -1,
+                    'date.day': -1,
+                    'date.hour': -1,
+                    'date.min': -1,
+                    'date.sec': -1
+                })
+                .toArray(function(err, docs) {
+                    if (err) {
                         throw err;
-                    }else{
-                        db.collection('talks').find({like:{$gt:0}})
-                            .sort({'like':-1})
+                    } else {
+                        db.collection('talks').find({
+                                like: {
+                                    $gt: 0
+                                }
+                            })
+                            .sort({
+                                'like': -1
+                            })
                             .limit(3)
-                            .toArray(function(err, docsTop3){
-                                var result = {top3:docsTop3, all:docs};
+                            .toArray(function(err, docsTop3) {
+                                var result = {
+                                    top3: docsTop3,
+                                    all: docs
+                                };
                                 res.status(200).send(result);
                                 db.close();
                             });
 
                     }
 
-            })
+                })
         }
 
     });
 }
 
-function insertTalk(data){
-    client.connect(dbUrl, function(err, db){
-        if(err){
+function insertTalk(data) {
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
             throw err;
-        }else{
+        } else {
             db.collection('talks').insert(data);
         }
         db.close();
     })
 }
 
-function insertReply(data, talkId){
-    client.connect(dbUrl, function(err, db){
-        if(err){
+function insertReply(data, talkId) {
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
             throw err;
-        }else{
-            db.collection('talks').update(
-                {_id: new ObjectID(talkId)},
-                {$push: {replies:{msg:data.msg, date:data.date}}},
-                {upsert: true}
-            )
+        } else {
+            db.collection('talks').update({
+                _id: new ObjectID(talkId)
+            }, {
+                $push: {
+                    replies: {
+                        msg: data.msg,
+                        date: data.date
+                    }
+                }
+            }, {
+                upsert: true
+            })
         }
         db.close();
     })
 }
 
-function getCurrentDate(){
+function getCurrentDate() {
     var date = new Date();
     var result = {};
     result.year = date.getFullYear();
-    result.month = date.getMonth()+1;
+    result.month = date.getMonth() + 1;
     result.day = date.getDate();
     result.hour = date.getHours();
     result.min = date.getMinutes();
