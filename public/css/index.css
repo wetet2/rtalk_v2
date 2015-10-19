@@ -121,13 +121,13 @@
     margin-bottom: 10px;
 }
 #inputTextOri::-webkit-input-placeholder{
-    color: rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     font-style: italic;
     font-weight: bold;
 }
 #inputTextOri::-moz-input-placeholder{
-    color: rgba(0, 0, 0, 0.25);
+    color: rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     font-style: italic;
     font-weight: bold;
