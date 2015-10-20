@@ -116,7 +116,7 @@ function init() {
 function startReloadTimer() {
     setInterval(function() {
         window.location.reload();
-    }, 61 * 1000);
+    }, 64 * 1000);
 }
 var refreshTimer;
 
@@ -183,7 +183,7 @@ $(function() {
 
     Autolinker.prototype.twitter = false;
     $('#myCarousel').carousel({
-        interval: 10000
+        interval: 7000
     });
 
 
