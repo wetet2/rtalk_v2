@@ -198,11 +198,11 @@
     font-size: 1.15em;
 }
 
-.message-wrapper a[type=img] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.message-wrapper img{
+    display: block;
+    margin: auto;
 }
+
 .reply-wrapper{
     background-color: rgb(240, 240, 240);
     border-radius: 2px;

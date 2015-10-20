@@ -51,7 +51,7 @@ function drawTalks(data){
         html = html +     '<div class="message-wrapper">'
         html = html +         '<p>'+data[i].msg+'</p>'
         if(data[i].image.length > 0){
-            html = html +     '<a type="img" href="'+data[i].image+'" target="_blank"><img src="'+data[i].image+'"></a>'
+            html = html +     '<div><img src="'+data[i].image+'"></div>'
         }
         html = html +         '<div class="box-info">'
         html = html +             '<div class="box-date">'+getFormatDate(data[i].date)+'</div>'

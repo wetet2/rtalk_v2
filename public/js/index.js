@@ -109,8 +109,8 @@ function init() {
     })
 
     initMasonry();
-    startRefreshTimer();
-    startReloadTimer();
+    // startRefreshTimer();
+    // startReloadTimer();
 }
 
 function startReloadTimer() {
@@ -183,7 +183,7 @@ $(function() {
 
     Autolinker.prototype.twitter = false;
     $('#myCarousel').carousel({
-        interval: 7000
+        interval: 0
     });
 
 
