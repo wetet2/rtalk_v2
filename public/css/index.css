@@ -20,18 +20,7 @@
 }
 @media (min-width: 768px) {
     .box {
-        width: 32%;
-        background: rgb(255, 255, 255);
-        margin-bottom: 10px;
-        /*padding: 5px 5px 2px 5px;*/
-        border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
-        word-wrap: break-word;
-    }
-}
-@media (min-width: 995px) {
-    .box {
-        width: 23.82%;
+        width: 32.5%;
         background: rgb(255, 255, 255);
         margin-bottom: 10px;
         /*padding: 5px 5px 2px 5px;*/
