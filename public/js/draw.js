@@ -16,7 +16,7 @@ function drawTop3(data){
             htmlIndicator = htmlIndicator + '<li data-target="#myCarousel" data-slide-to="'+i+'" class="'+active+'"></li>'
             html = html + '<div class="item '+active+'">'
             html = html +     '<div class="container">'
-            html = html +         '<div class="carousel-caption">'
+            html = html +         '<div class="carousel-caption" hash="'+data[i]._id+'">'
             if(data[i].image.length > 0){
                 html = html +             '<img src="'+data[i].image+'" class="header-img-click" align="left">'
             }

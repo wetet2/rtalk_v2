@@ -9,8 +9,8 @@ function init() {
     });
 
     $('.header-img-click').click(function(e) {
-        var imgUrl = $(this).attr('src');
-        window.open(imgUrl);
+        var boxId = $(this).closest('.carousel-caption').attr('hash');
+        window.location.href='/#'+boxId;
     })
 
     $('.message-img-click').click(function(e) {
@@ -114,9 +114,10 @@ function init() {
     })
 
     initMasonry();
-    // startRefreshTimer();
-    // startReloadTimer();
+    startRefreshTimer();
+    startReloadTimer();
 }
+var carouselInterval = 7000;
 
 function startReloadTimer() {
     setInterval(function() {
@@ -188,7 +189,7 @@ $(function() {
 
     Autolinker.prototype.twitter = false;
     $('#myCarousel').carousel({
-        interval: 0
+        interval: carouselInterval
     });
 
 
