@@ -136,46 +136,68 @@ function dislike(res, id) {
     })
 }
 
-
 function findAll(res) {
+
+    var today = new Date();
+    today.setDate(today.getDate() - 14);
+    var searchYear = today.getFullYear();
+    var searchMonth = today.getMonth() + 1;
+    var searchDate = today.getDate();
+
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;
         } else {
-            db.collection('talks').find({})
-                .sort({
-                    'mdate.year': -1,
-                    'mdate.month': -1,
-                    'mdate.day': -1,
-                    'mdate.hour': -1,
-                    'mdate.min': -1,
-                    'mdate.sec': -1
-                })
-                .toArray(function(err, docs) {
-                    if (err) {
-                        throw err;
-                    } else {
-                        db.collection('talks').find({
-                                like: {
+            db.collection('talks')
+            .find({
+                'date.year':{$gte:searchYear},
+                'date.month':{$gte:searchMonth},
+                'date.day':{$gte:searchDate}
+            })
+            .sort({
+                'mdate.year': -1,
+                'mdate.month': -1,
+                'mdate.day': -1,
+                'mdate.hour': -1,
+                'mdate.min': -1,
+                'mdate.sec': -1
+            })
+            .limit(50)
+            .toArray(function(err, docs) {
+                if (err) {
+                    throw err;
+                } else {
+                    db.collection('talks').find({
+                            $and :[
+                                {like: {
                                     $gt: 0
+                                }},
+                                {dislike: {
+                                    $ne: -1
+                                }},
+                                {
+                                    'date.year':{$gte:searchYear},
+                                    'date.month':{$gte:searchMonth},
+                                    'date.day':{$gte:searchDate}
                                 }
-                            })
-                            .sort({
-                                'like': -1
-                            })
-                            .limit(3)
-                            .toArray(function(err, docsTop3) {
-                                var result = {
-                                    top3: docsTop3,
-                                    all: docs
-                                };
-                                res.status(200).send(result);
-                                db.close();
-                            });
+                            ]
+                        })
+                        .sort({
+                            'like': -1
+                        })
+                        .limit(3)
+                        .toArray(function(err, docsTop3) {
+                            var result = {
+                                top3: docsTop3,
+                                all: docs
+                            };
+                            res.status(200).send(result);
+                            db.close();
+                        });
 
-                    }
+                }
 
-                })
+            })
         }
 
     });
