@@ -28,9 +28,9 @@ router.get('/with/:imgUrl', function(req, res) {
 router.post('/save', function(req, res, next) {
 
     var fileSize = parseInt(req.headers['content-length']);
-    if(fileSize > 2100000){
+    if (fileSize > 2100000) {
         res.status(200).send('최대 2M 업로드 가능합니다');
-    }else{
+    } else {
 
         var form = new formidable.IncomingForm();
         form.keepExtensions = true;
@@ -144,12 +144,12 @@ function findAll(res) {
         } else {
             db.collection('talks').find({})
                 .sort({
-                    'date.year': -1,
-                    'date.month': -1,
-                    'date.day': -1,
-                    'date.hour': -1,
-                    'date.min': -1,
-                    'date.sec': -1
+                    'mdate.year': -1,
+                    'mdate.month': -1,
+                    'mdate.day': -1,
+                    'mdate.hour': -1,
+                    'mdate.min': -1,
+                    'mdate.sec': -1
                 })
                 .toArray(function(err, docs) {
                     if (err) {
@@ -186,6 +186,7 @@ function insertTalk(data) {
         if (err) {
             throw err;
         } else {
+            data.mdate = data.date;
             db.collection('talks').insert(data);
         }
         db.close();
@@ -208,6 +209,11 @@ function insertReply(data, talkId) {
                 }
             }, {
                 upsert: true
+            });
+            db.collection('talks').update({
+                _id: new ObjectID(talkId)
+            }, {
+                $set: {mdate: data.date}
             })
         }
         db.close();
