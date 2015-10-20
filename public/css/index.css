@@ -96,6 +96,12 @@
 .wall-outer {
     padding: 0px 10px 0px 15px;
 }
+
+.message-img-click,
+.header-img-click{
+    cursor: pointer;
+}
+
 #divTitle {
     display: flex;
     align-items: center;

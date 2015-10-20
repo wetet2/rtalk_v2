@@ -13,6 +13,11 @@ function init() {
         window.open(imgUrl);
     })
 
+    $('.message-img-click').click(function(e) {
+        var imgUrl = $(this).attr('src');
+        window.open(imgUrl);
+    })
+
     // $('.reply-more').unbind();
     $('.reply-more').click(function(e) {
         var more = $(this);
