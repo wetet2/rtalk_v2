@@ -117,12 +117,14 @@ function init() {
     startRefreshTimer();
     startReloadTimer();
 }
-var carouselInterval = 7000;
+var carouselInterval = 5000;
+var refreshTop3 = 120;
+var refreshTalks = 45;
 
 function startReloadTimer() {
     setInterval(function() {
         window.location.reload();
-    }, 64 * 1000);
+    }, refreshTop3 * 1000);
 }
 var refreshTimer;
 
@@ -132,7 +134,7 @@ function startRefreshTimer() {
     }
     refreshTimer = setInterval(function() {
         refresh();
-    }, 15 * 1000);
+    }, refreshTalks * 1000);
 }
 
 function refresh(isFirst) {
