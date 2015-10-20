@@ -110,12 +110,13 @@ function drawReplies(talk){
 var today = new Date();
 function getFormatDate(date){
     var result = '';
-    if(today.getFullYear() != date.year
-        || (today.getMonth()+1) != date.month
-        || today.getDate() != date.day){
-        result = fillzero(date.month,2) + "-" + fillzero(date.day,2) + " ";
-    }
-    result = result + fillzero(date.hour,2) + ":" + fillzero(date.min,2);
+    result = fillzero(date.month,2) + "-" + fillzero(date.day,2)
+    // if(today.getFullYear() != date.year
+    //     || (today.getMonth()+1) != date.month
+    //     || today.getDate() != date.day){
+    //     result = fillzero(date.month,2) + "-" + fillzero(date.day,2) + " ";
+    // }
+    // result = result + fillzero(date.hour,2) + ":" + fillzero(date.min,2);
     return result;
 }
 
