@@ -118,7 +118,7 @@ function init() {
     startReloadTimer();
 }
 var carouselInterval = 5000;
-var refreshTop3 = 120;
+var refreshTop3 = 122;
 var refreshTalks = 45;
 
 function startReloadTimer() {
