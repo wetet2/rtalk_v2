@@ -205,6 +205,14 @@ $(function() {
         if(msg.trim().length == 0 && $('#inputImage').length == 0){
             return false;
         }
+
+        if(msg.indexOf('@reply:') === 0){
+            var validation = msg.trim().replace('@reply:','');
+            if(validation.trim().length == 0){
+                return false;
+            }
+        }
+
         msg = Autolinker.link(msg, {
             truncate: 15,
             stripPrefix: true

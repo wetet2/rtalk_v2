@@ -185,7 +185,7 @@
 }
 
 .message-wrapper{
-    padding: 15px 15px 5px 15px;
+    padding: 10px 15px 5px 15px;
 }
 
 .message-wrapper p{
@@ -211,8 +211,7 @@
 }
 .reply-wrapper-each {
     display: inline-block;
-    padding-top: 5px;
-    padding-right: 5px;
+    padding: 7px 5px 2px 0px;
     width: 100%;
     border-top: 2px white solid;
 }
