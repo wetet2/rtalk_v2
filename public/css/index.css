@@ -14,7 +14,7 @@
         margin-bottom: 10px;
         /*padding: 5px 5px 2px 5px;*/
         border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
+        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.8);
         word-wrap: break-word;
     }
 }
@@ -185,12 +185,13 @@
 }
 
 .message-wrapper{
-    padding: 10px 10px 0px 10px;
+    padding: 15px 15px 5px 15px;
 }
 
 .message-wrapper p{
     margin: 0 0 5px;
-    font-size: 1.15em;
+    font-size: 1.2em;
+    line-height: 1.7;
 }
 
 .message-wrapper img{
