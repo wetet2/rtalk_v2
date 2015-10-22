@@ -20,7 +20,7 @@
 }
 @media (min-width: 508px) {
     .box {
-        width: 46%;
+        width: 45.8%;
         background: rgb(255, 255, 255);
         margin: 10px 10px 10px 10px;
         /*padding: 5px 5px 2px 5px;*/
@@ -117,7 +117,7 @@
 
 
 .wall-outer {
-    padding: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 10px;
 }
 
 .message-img-click,
