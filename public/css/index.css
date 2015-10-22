@@ -1,28 +1,62 @@
 .box {
-    width: 47%;
+    width: 92%;
     background: rgb(255, 255, 255);
-    margin-bottom: 10px;
+    margin: 10px 10px 10px 10px;
     /*padding: 5px 5px 2px 5px;*/
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
     word-wrap: break-word;
 }
-@media (min-width: 508px) {
+@media (min-width: 360px) {
     .box {
-        width: 48.5%;
+        width: 43.5%;
         background: rgb(255, 255, 255);
-        margin-bottom: 10px;
+        margin: 10px 10px 10px 10px;
         /*padding: 5px 5px 2px 5px;*/
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(55, 55, 55, 0.8);
         word-wrap: break-word;
     }
 }
+@media (min-width: 508px) {
+    .box {
+        width: 46%;
+        background: rgb(255, 255, 255);
+        margin: 10px 10px 10px 10px;
+        /*padding: 5px 5px 2px 5px;*/
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.8);
+        word-wrap: break-word;
+    }
+}
+@media (min-width: 720px) {
+    .box {
+        width: 46%;
+        background: rgb(255, 255, 255);
+        margin: 10px 10px 10px 15px;
+        /*padding: 5px 5px 2px 5px;*/
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
+        word-wrap: break-word;
+    }
+}
 @media (min-width: 768px) {
     .box {
-        width: 32%;
+        width: 30.2%;
         background: rgb(255, 255, 255);
-        margin-bottom: 10px;
+        margin: 10px 10px 10px 10px;
+        /*padding: 5px 5px 2px 5px;*/
+        border-radius: 2px;
+        box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
+        word-wrap: break-word;
+    }
+}
+
+@media (min-width: 1024px) {
+    .box {
+        width: 31.2%;
+        background: rgb(255, 255, 255);
+        margin: 10px 10px 10px 10px;
         /*padding: 5px 5px 2px 5px;*/
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(55, 55, 55, 0.6);
@@ -83,7 +117,7 @@
 
 
 .wall-outer {
-    padding: 0px 10px 0px 15px;
+    padding: 0px 0px 0px 0px;
 }
 
 .message-img-click,

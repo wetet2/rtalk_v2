@@ -163,7 +163,7 @@ function initMasonry() {
     var option = {
         itemSelector: '.box',
         percentPosition: true,
-        gutter: 15,
+        // gutter: 30,
         animate: true,
         animationOptions: {
             duration: 700,
@@ -186,7 +186,7 @@ function showAttachedImageIcon(yn) {
 
 
 $(function() {
-
+    // alert($(window).width());
     var submitOpts = { target: '#formSave', success: afterSubmit}
 
     Autolinker.prototype.twitter = false;
