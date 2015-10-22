@@ -114,10 +114,10 @@ function init() {
     })
 
     initMasonry();
-    // startRefreshTimer();
-    // startReloadTimer();
+    startRefreshTimer();
+    startReloadTimer();
 }
-var carouselInterval = 0;
+var carouselInterval = 5000;
 var refreshTop3 = 122;
 var refreshTalks = 45;
 
