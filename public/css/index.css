@@ -185,11 +185,12 @@
 }
 
 .message-wrapper{
-    padding: 10px 15px 10px 15px;
+    padding: 10px 15px 5px 15px;
 }
 
 .message-wrapper p{
     margin: 0 0 5px;
+
     font-size: 1.15em;
     line-height: 1.7;
 }
@@ -197,6 +198,7 @@
 .message-wrapper img{
     display: block;
     margin: auto;
+    margin-bottom: 5px;
 }
 
 .reply-wrapper{
