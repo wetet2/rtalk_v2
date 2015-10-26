@@ -20,7 +20,7 @@
 }
 @media (min-width: 508px) {
     .box {
-        width: 44.8%;
+        width: 45.8%;
         background: rgb(255, 255, 255);
         margin: 10px 10px 10px 10px;
         /*padding: 5px 5px 2px 5px;*/
@@ -31,7 +31,7 @@
 }
 @media (min-width: 720px) {
     .box {
-        width: 40%;
+        width: 45%;
         background: rgb(255, 255, 255);
         margin: 10px 10px 10px 15px;
         /*padding: 5px 5px 2px 5px;*/
