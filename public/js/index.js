@@ -114,11 +114,11 @@ function init() {
     })
 
     initMasonry();
-    startRefreshTimer();
+    // startRefreshTimer();
     startReloadTimer();
 }
 var carouselInterval = 5000;
-var refreshTop3 = 122;
+var refreshTop3 = 90;
 var refreshTalks = 45;
 
 function startReloadTimer() {
@@ -126,8 +126,8 @@ function startReloadTimer() {
         window.location.reload();
     }, refreshTop3 * 1000);
 }
-var refreshTimer;
 
+var refreshTimer;
 function startRefreshTimer() {
     if (refreshTimer) {
         clearInterval(refreshTimer);
