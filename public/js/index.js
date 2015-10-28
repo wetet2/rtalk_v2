@@ -197,7 +197,7 @@ $(function() {
 
 
     $('#divTitle').click(function() {
-        refresh();
+        window.location.reload();
     });
 
     $('#btnGo').click(function() {
