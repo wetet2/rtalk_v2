@@ -114,27 +114,15 @@ function init() {
     })
 
     initMasonry();
-    // startRefreshTimer();
     startReloadTimer();
 }
 var carouselInterval = 5000;
-var refreshTop3 = 90;
-var refreshTalks = 45;
+var refreshInteval = 90;
 
 function startReloadTimer() {
-    setInterval(function() {
+    setTimeout(function(){
         window.location.reload();
-    }, refreshTop3 * 1000);
-}
-
-var refreshTimer;
-function startRefreshTimer() {
-    if (refreshTimer) {
-        clearInterval(refreshTimer);
-    }
-    refreshTimer = setInterval(function() {
-        refresh();
-    }, refreshTalks * 1000);
+    }, refreshInteval * 1000)
 }
 
 function refresh(isFirst) {
