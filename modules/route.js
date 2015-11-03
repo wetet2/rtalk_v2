@@ -58,6 +58,7 @@ router.post('/save', function(req, res, next) {
                     imgUrl = '/img/upload' + fileName;
                 }
                 data.image = imgUrl;
+                data.dateStr = getCurrentDateStr();
                 data.date = getCurrentDate();
                 data.like = 0;
                 data.dislike = 0;
@@ -143,6 +144,7 @@ function findAll(res) {
     var searchYear = today.getFullYear();
     var searchMonth = today.getMonth() + 1;
     var searchDate = today.getDate();
+    var dateStr = searchYear+fillzero(searchMonth,2)+fillzero(searchDate,2)
 
     client.connect(dbUrl, function(err, db) {
         if (err) {
@@ -150,9 +152,7 @@ function findAll(res) {
         } else {
             db.collection('talks')
             .find({
-                'date.year':{$gte:searchYear},
-                'date.month':{$gte:searchMonth},
-                'date.day':{$gte:searchDate}
+                'dateStr':{$gte:dateStr}
             })
             .sort({
                 'mdate.year': -1,
@@ -204,10 +204,12 @@ function findAll(res) {
 }
 
 function insertTalk(data) {
+    console.log(data);
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;
         } else {
+
             data.mdate = data.date;
             db.collection('talks').insert(data);
         }
@@ -252,7 +254,19 @@ function getCurrentDate() {
     result.min = date.getMinutes();
     result.sec = date.getSeconds();
     return result;
+}
 
+function getCurrentDateStr() {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    return '' + year + fillzero(month, 2) + fillzero(day, 2);
+}
+
+function fillzero(obj, len) {
+    obj= '000000000000000'+obj;
+    return obj.substring(obj.length-len);
 }
 
 module.exports = router;
