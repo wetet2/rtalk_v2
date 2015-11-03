@@ -204,7 +204,7 @@ function findAll(res) {
 }
 
 function insertTalk(data) {
-    console.log(data);
+    
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;
