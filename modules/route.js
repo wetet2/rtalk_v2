@@ -176,9 +176,7 @@ function findAll(res) {
                                     $ne: -1
                                 }},
                                 {
-                                    'date.year':{$gte:searchYear},
-                                    'date.month':{$gte:searchMonth},
-                                    'date.day':{$gte:searchDate}
+                                    'dateStr':{$gte:dateStr}
                                 }
                             ]
                         })
@@ -204,7 +202,7 @@ function findAll(res) {
 }
 
 function insertTalk(data) {
-    
+
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;
