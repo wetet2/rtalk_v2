@@ -144,7 +144,14 @@ function findAll(res) {
     var searchYear = today.getFullYear();
     var searchMonth = today.getMonth() + 1;
     var searchDate = today.getDate();
-    var dateStr = searchYear+fillzero(searchMonth,2)+fillzero(searchDate,2)
+    var dateStr = searchYear+fillzero(searchMonth,2)+fillzero(searchDate,2);
+
+    var today2 = new Date();
+    today2.setDate(today2.getDate() - 10);
+    var searchYear2 = today2.getFullYear();
+    var searchMonth2 = today2.getMonth() + 1;
+    var searchDate2 = today2.getDate();
+    var dateStr2 = searchYear2+fillzero(searchMonth2,2)+fillzero(searchDate2,2);
 
     client.connect(dbUrl, function(err, db) {
         if (err) {
@@ -176,7 +183,7 @@ function findAll(res) {
                                     $ne: -1
                                 }},
                                 {
-                                    'dateStr':{$gte:dateStr}
+                                    'dateStr':{$gte:dateStr2}
                                 }
                             ]
                         })
