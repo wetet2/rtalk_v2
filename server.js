@@ -31,6 +31,10 @@ app.use(function(req,res,next){
 
 app.use('/',route);
 
+process.on('uncaughtException', function(err){
+    console.log(err);
+});
+
 http.listen(port, function(){
     console.log('Server listening on '+ port +' port');
 });
