@@ -53,6 +53,19 @@ function drawTalks(data){
         if(data[i].image.length > 0){
             html = html +     '<div><img class="message-img-click" src="'+data[i].image+'"></div>'
         }
+        if(data[i].link && data[i].link.type == 'link'){
+            html = html + '<div class="link" style="border-left: 8px solid '+getRandomColor()+'">'
+            // html = html + '    <div class="link-provider">'
+            // html = html + '        <img src="/img/provider.png">'+data[i].link.provider_name
+            // html = html + '    </div>'
+            html = html + '    <div class="link-thumbnail">'
+            html = html + '        <img src="'+data[i].link.thumbnail_url+'">'
+            html = html + '    </div>'
+            html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
+            html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
+            html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
+            html = html + '</div>'
+        }
         html = html +         '<div class="box-info">'
         html = html +             '<div class="box-date">'+getFormatDate(data[i].date)+'</div>'
         html = html +             '<div class="box-add-reply">댓글</div>'
@@ -123,4 +136,15 @@ function getFormatDate(date){
 function fillzero(obj, len) {
     obj= '000000000000000'+obj;
     return obj.substring(obj.length-len);
+}
+
+function getRandomColor() {
+    // var letters = '0123456789ABCDEF'.split('');
+    var data = '23456789ABCDE';
+    var letters = data.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * data.length)];
+    }
+    return color;
 }

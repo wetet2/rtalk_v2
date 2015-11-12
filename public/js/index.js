@@ -1,3 +1,5 @@
+var embedly_url = 'http://api.embed.ly/1/oembed?key=7b28441e2d01480596aac70e57ab9f79&url='
+var onProcessing = false;
 function init() {
 
     $('.box-add-reply').click(function() {
@@ -189,31 +191,65 @@ $(function() {
     });
 
     $('#btnGo').click(function() {
-        var msg = $('#inputTextOri').val();
-        if(msg.trim().length == 0 && $('#inputImage').length == 0){
-            return false;
-        }
-
-        if(msg.indexOf('@reply:') === 0){
-            var validation = msg.trim().replace('@reply:','');
-            if(validation.trim().length == 0){
+        if(!onProcessing){
+            onProcessing = true;
+            var msg = $('#inputTextOri').val();
+            if(msg.trim().length == 0 && $('#inputImage').length == 0){
                 return false;
+            }
+
+            if(msg.indexOf('@reply:') === 0){
+                var validation = msg.trim().replace('@reply:','');
+                if(validation.trim().length == 0){
+                    return false;
+                }
+            }
+
+            var link = Autolinker.onlyLink(msg);
+            if(link && link != ''){
+                $.ajax({
+                    type: 'get',
+                    contentType: 'application/json',
+                    url: embedly_url + escape(link),
+                    success: function(data) {
+                        if(data.type == 'link'){
+                            delete data['thumbnail_height'];
+                            delete data['thumbnail_width'];
+                            delete data['version'];
+                            $('#inputLinkInfo').val(JSON.stringify(data));
+                            submit(msg.replace(link, ''));
+                            $('#inputLinkInfo').val('');
+                        }else{
+                            normalSubmit(msg);
+                        }
+                    },
+                    error: function(e) {
+                        normalSubmit(msg);
+                    }
+                });
+            }else{
+                normalSubmit(msg);
             }
         }
 
+    });
+
+    function normalSubmit(msg){
         msg = Autolinker.link(msg, {
             truncate: 15,
             stripPrefix: true
         });
-        $('#inputText').val(msg);
+        submit(msg);
+    }
 
+    function submit(msg){
+        $('#inputText').val(msg);
         if ($('#inputImage').val() == '') {
             $('#inputImage').remove();
         }
-
-        $('form').submit()
-
-    })
+        $('form').submit();
+        onProcessing = false;
+    }
 
     function afterSubmit(res){
         console.log('afterSubmit');

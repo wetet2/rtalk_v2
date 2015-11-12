@@ -49,6 +49,9 @@ router.post('/save', function(req, res, next) {
             } else {
                 var data = {};
                 data.msg = fields.inputText;
+                if(fields.inputLinkInfo){
+                    data.link = JSON.parse(fields.inputLinkInfo);
+                }
 
                 var imgUrl = '';
                 if (files.inputImage) {
@@ -214,7 +217,6 @@ function insertTalk(data) {
         if (err) {
             throw err;
         } else {
-
             data.mdate = data.date;
             db.collection('talks').insert(data);
         }
