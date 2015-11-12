@@ -211,6 +211,7 @@ $(function() {
             var link = Autolinker.onlyLink(msg);
             if(link && link != ''){
                 $.ajax({
+                    
                     type: 'get',
                     contentType: 'application/json',
                     url: embedly_url + escape(link),
