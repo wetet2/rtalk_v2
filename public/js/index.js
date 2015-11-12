@@ -192,15 +192,18 @@ $(function() {
 
     $('#btnGo').click(function() {
         if(!onProcessing){
+            changeButtonImage(1);
             onProcessing = true;
             var msg = $('#inputTextOri').val();
             if(msg.trim().length == 0 && $('#inputImage').length == 0){
+                changeButtonImage(0);
                 return false;
             }
 
             if(msg.indexOf('@reply:') === 0){
                 var validation = msg.trim().replace('@reply:','');
                 if(validation.trim().length == 0){
+                    changeButtonImage(0);
                     return false;
                 }
             }
@@ -216,6 +219,9 @@ $(function() {
                             delete data['thumbnail_height'];
                             delete data['thumbnail_width'];
                             delete data['version'];
+                            if(data.description.length > 100){
+                                data.description = data.description.substring(0,100)+'...';
+                            }
                             $('#inputLinkInfo').val(JSON.stringify(data));
                             submit(msg.replace(link, ''));
                             $('#inputLinkInfo').val('');
@@ -224,6 +230,7 @@ $(function() {
                         }
                     },
                     error: function(e) {
+                        console.log(JSON.stringify(e));
                         normalSubmit(msg);
                     }
                 });
@@ -233,6 +240,14 @@ $(function() {
         }
 
     });
+
+    function changeButtonImage(image){
+        if(image == 1){
+            $('#btnGo img').attr('src','/img/loading.png');
+        }else{
+            $('#btnGo img').attr('src','/img/write.png');
+        }
+    }
 
     function normalSubmit(msg){
         msg = Autolinker.link(msg, {

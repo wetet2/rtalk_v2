@@ -20,7 +20,11 @@ function drawTop3(data){
             if(data[i].image.length > 0){
                 html = html +             '<img src="'+data[i].image+'" class="header-img-click" align="left">'
             }
-            html = html +             '<div class="header-content"><span>'+data[i].msg+'</span></div>'
+            html = html +             '<div class="header-content"><span>'+data[i].msg
+            if(data[i].link && data[i].link.type == 'link'){
+                html = html +               '<br><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.title+'</a>'
+            }
+            html = html +             '</span></div>'
             html = html +         '</div>'
             html = html +     '</div>'
             html = html + '</div>'

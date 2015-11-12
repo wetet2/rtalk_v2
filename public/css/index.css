@@ -300,7 +300,7 @@ input[type=text] {
     margin: 4px 0px 4px 0px;
 }
 .link-thumbnail img {
-    max-height: 500px;
+    max-height: 400px;
 }
 .link-title {
     margin: 4px 0px 4px 0px;
