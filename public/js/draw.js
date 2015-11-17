@@ -92,7 +92,7 @@ function drawReplies(talk){
     if(talk.replies){
         var count = 0;
         html = html + '<div class="reply-wrapper">'
-        for(var i=talk.replies.length-1 ; count<2 && i>=0 ; i--){
+        for(var i=talk.replies.length-1 ; i>=0 ; i--){
             var reply = talk.replies[i];
             html = html +     '<div class="reply-wrapper-each">'
             html = html +         '<div class="reply-header">+</div>'
@@ -100,23 +100,22 @@ function drawReplies(talk){
             html = html +             '<div class="reply-date">'+getFormatDate(reply.date)+'</div>'
             html = html +         '</div>'
             html = html +     '</div>'
-            count++;
         }
         html = html + '</div>'
-        if(talk.replies.length > 2){
-            html = html + '<div class="reply-wrapper-all">'
-            for(var i=talk.replies.length-1 ; i>=0 ; i--){
-                var reply = talk.replies[i];
-                html = html +     '<div class="reply-wrapper-each">'
-                html = html +         '<div class="reply-header">+</div>'
-                html = html +         '<div class="reply-content">'+reply.msg
-                html = html +             '<div class="reply-date">'+getFormatDate(reply.date)+'</div>'
-                html = html +         '</div>'
-                html = html +     '</div>'
-            }
-            html = html + '</div>'
-            html = html + '<div class="reply-more arrow-down"></div>'
-        }
+        // if(talk.replies.length > 2){
+        //     html = html + '<div class="reply-wrapper-all">'
+        //     for(var i=talk.replies.length-1 ; i>=0 ; i--){
+        //         var reply = talk.replies[i];
+        //         html = html +     '<div class="reply-wrapper-each">'
+        //         html = html +         '<div class="reply-header">+</div>'
+        //         html = html +         '<div class="reply-content">'+reply.msg
+        //         html = html +             '<div class="reply-date">'+getFormatDate(reply.date)+'</div>'
+        //         html = html +         '</div>'
+        //         html = html +     '</div>'
+        //     }
+        //     html = html + '</div>'
+        //     html = html + '<div class="reply-more arrow-down"></div>'
+        // }
     }else{
 
     }
