@@ -92,7 +92,7 @@ function drawReplies(talk){
     if(talk.replies){
         var count = 0;
         html = html + '<div class="reply-wrapper">'
-        for(var i=talk.replies.length-1 ; i>=0 ; i--){
+        for(var i=0 ; i<talk.replies.length ; i++){
             var reply = talk.replies[i];
             html = html +     '<div class="reply-wrapper-each">'
             html = html +         '<div class="reply-header">+</div>'
