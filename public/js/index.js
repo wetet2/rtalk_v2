@@ -119,7 +119,7 @@ function init() {
     startReloadTimer();
 }
 var carouselInterval = 5000;
-var refreshInteval = 90;
+var refreshInteval = 120;
 
 function startReloadTimer() {
     setTimeout(function(){
