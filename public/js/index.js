@@ -112,7 +112,7 @@ function init() {
     });
 
     $('.box img').load(function() {
-        $('.wall').masonry();
+        initMasonry();
     })
 
     initMasonry();
@@ -152,13 +152,13 @@ function rearrangeMasonry() {
 function initMasonry() {
     var option = {
         itemSelector: '.box',
-        percentPosition: true,
+        percentPosition: true
         // gutter: 30,
-        animate: true,
-        animationOptions: {
-            duration: 700,
-            queue: true,
-        }
+        // animate: true,
+        // animationOptions: {
+        //     duration: 700,
+        //     queue: true,
+        // }
     };
     $('.wall').masonry(option);
 }
@@ -211,7 +211,7 @@ $(function() {
             var link = Autolinker.onlyLink(msg);
             if(link && link != ''){
                 $.ajax({
-                    
+
                     type: 'get',
                     contentType: 'application/json',
                     url: embedly_url + escape(link),

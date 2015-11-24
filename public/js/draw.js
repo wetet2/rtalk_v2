@@ -63,7 +63,7 @@ function drawTalks(data){
             // html = html + '        <img src="/img/provider.png">'+data[i].link.provider_name
             // html = html + '    </div>'
             html = html + '    <div class="link-thumbnail">'
-            html = html + '        <img src="'+data[i].link.thumbnail_url+'">'
+            html = html + '        <img src="'+data[i].link.thumbnail_url+'" onload="initMasonry()">'
             html = html + '    </div>'
             html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
             html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
