@@ -1,5 +1,14 @@
 var embedly_url = 'http://api.embed.ly/1/oembed?key=7b28441e2d01480596aac70e57ab9f79&url='
 var onProcessing = false;
+
+var carouselInterval = 5000;
+var refreshInteval = 90;
+function startReloadTimer() {
+    setTimeout(function(){
+        window.location.reload();
+    }, refreshInteval * 1000)
+}
+
 function init() {
 
     $('.box-add-reply').click(function() {
@@ -116,16 +125,9 @@ function init() {
     })
 
     initMasonry();
-    startReloadTimer();
-}
-var carouselInterval = 5000;
-var refreshInteval = 120;
 
-function startReloadTimer() {
-    setTimeout(function(){
-        window.location.reload();
-    }, refreshInteval * 1000)
 }
+
 
 function refresh(isFirst) {
     $.ajax({
@@ -137,10 +139,16 @@ function refresh(isFirst) {
                 drawTop3(data.top3);
             }
             drawTalks(data.all);
-            init();
+            try{
+                init();
+            }catch(err){
+            }
         },
         error: function(e) {
             console.error(e);
+        },
+        complete: function(e){
+            startReloadTimer();
         }
     });
 }
