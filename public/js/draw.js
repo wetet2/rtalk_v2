@@ -57,18 +57,29 @@ function drawTalks(data){
         if(data[i].image.length > 0){
             html = html +     '<div><img class="message-img-click" src="'+data[i].image+'"></div>'
         }
-        if(data[i].link && data[i].link.type == 'link'){
-            html = html + '<div class="link" style="border-left: 8px solid '+getRandomColor()+'">'
-            // html = html + '    <div class="link-provider">'
-            // html = html + '        <img src="/img/provider.png">'+data[i].link.provider_name
-            // html = html + '    </div>'
-            html = html + '    <div class="link-thumbnail">'
-            html = html + '        <img src="'+data[i].link.thumbnail_url+'" onload="initMasonry()">'
-            html = html + '    </div>'
-            html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
-            html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
-            html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
-            html = html + '</div>'
+        if(data[i].link){
+            if(data[i].link.type == 'link'){
+                html = html + '<div class="link" style="border-left: 8px solid '+getRandomColor()+'">'
+                // html = html + '    <div class="link-provider">'
+                // html = html + '        <img src="/img/provider.png">'+data[i].link.provider_name
+                // html = html + '    </div>'
+                html = html + '    <div class="link-thumbnail">'
+                html = html + '        <img src="'+data[i].link.thumbnail_url+'" onload="initMasonry()">'
+                html = html + '    </div>'
+                html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
+                html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
+                html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
+                html = html + '</div>'
+            }else if(data[i].link.type == 'video'){
+                html = html + '<div class="link">';
+
+                html = html + '    <div class="link-thumbnail">'
+                html = html +         data[i].link.html
+                html = html + '    </div>'
+                html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
+                html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
+                html = html + '</div>';
+            }
         }
         html = html +         '<div class="box-info">'
         html = html +             '<div class="box-date">'+getFormatDate(data[i].date)+'</div>'

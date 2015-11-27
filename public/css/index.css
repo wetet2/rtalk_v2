@@ -302,6 +302,10 @@ input[type=text] {
 .link-thumbnail img {
     max-height: 400px;
 }
+.link-thumbnail iframe{
+    width: 100%;
+    height: 100%;
+}
 .link-title {
     margin: 4px 0px 4px 0px;
     font-weight: bold;
