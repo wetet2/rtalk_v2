@@ -20,8 +20,10 @@ function init() {
     });
 
     $('.header-img-click').click(function(e) {
-        var boxId = $(this).closest('.carousel-caption').attr('hash');
-        window.location.href='/#'+boxId;
+        // var boxId = $(this).closest('.carousel-caption').attr('hash');
+        // window.location.href='/#'+boxId;
+        var src = $(this).attr('src');
+        window.open(src,'_blank');
     })
 
     $('.message-img-click').click(function(e) {
