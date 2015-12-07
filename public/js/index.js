@@ -11,6 +11,8 @@ function startReloadTimer() {
 
 function init() {
 
+    // alert($(window).height());
+    
     $('.box-add-reply').click(function() {
         var id = $(this).closest('.box').attr('id')
         $('#inputId').val(id);
