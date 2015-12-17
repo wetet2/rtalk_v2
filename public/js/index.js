@@ -1,8 +1,8 @@
 var embedly_url = 'http://api.embed.ly/1/oembed?key=7b28441e2d01480596aac70e57ab9f79&url='
 var onProcessing = false;
 
-var carouselInterval = 5000;
-var refreshInteval = 90;
+var carouselInterval = 10000;
+var refreshInteval = 120;
 function startReloadTimer() {
     setTimeout(function(){
         window.location.reload();
@@ -12,7 +12,7 @@ function startReloadTimer() {
 function init() {
 
     // alert($(window).height());
-    
+
     $('.box-add-reply').click(function() {
         var id = $(this).closest('.box').attr('id')
         $('#inputId').val(id);
