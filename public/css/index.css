@@ -366,6 +366,7 @@
     height: 20px;
     background-color: #000000ff;
     cursor: pointer;
+    z-index: 10000;
 }
 
 .survey-btn img{
