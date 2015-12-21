@@ -55,12 +55,15 @@
             <input class="main-input" type="text" id="inputTextOri" maxlength="150" placeholder="Message...150 characters limit">
             <div class="attached-image"></div>
         </div>
-        <label id="btnImage" class="button-mid bg-color1" title="upload image">
+
+        <label id="btnImage" class="button-write bg-color1" title="upload image">
             <span><img src="/img/image.png"></span>
         </label>
-        <label id="btnGo" class="button-mid no-border bg-color2" title="save message">
+
+        <label id="btnGo" class="button-image no-border bg-color2" title="save message">
             <span><img src="/img/write.png" ></span>
         </label>
+        
         <form id="mainForm" method="post" enctype="multipart/form-data" action="/save">
             <input type="text" name="inputText" id="inputText" />
             <input type="text" name="inputId" id="inputId" />

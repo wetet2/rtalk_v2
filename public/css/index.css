@@ -160,18 +160,20 @@
     height: 25px;
 }
 .message {
-    position: relative;
+    position: absolute;
     float: left;
-    width: 80%;
+    left: 0;
+    right: 120px;
     height: 35px;
     margin: 6px 0px 0px 0px;
     background-color: white;
     /*border-radius: 2px;*/
 }
-.button-mid {
-    float: left;
-    width: 10%;
-    min-width: 20px;
+.button-write {
+    position: absolute;
+    float: right;
+    right: 60px;
+    width: 60px;
     height: 35px;
     margin: 6px 0px 0px 0px;
     font-weight: bold;
@@ -179,6 +181,31 @@
     text-align: center;
     cursor: pointer;
 }
+.button-image {
+    position: absolute;
+    float: right;
+    right: 0px;
+    width: 60px;
+    height: 35px;
+    margin: 6px 0px 0px 0px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+#btnGo span{
+    position: absolute;
+    top: 7px;
+    left: 20px;
+}
+
+#btnImage span{
+    position: absolute;
+    top: 6px;
+    left: 18px;
+}
+
 .bg-color1 {
     background-color: rgb(0, 113, 178);
 }
