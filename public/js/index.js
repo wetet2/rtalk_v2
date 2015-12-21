@@ -281,7 +281,7 @@ $(function() {
                     changeButtonImage(0);
                     return false;
                 }
-            }else if(msg.indexOf('@survey') === 0){
+            }else if(msg.toLowerCase().indexOf('@survey') === 0){
                 changeButtonImage(0);
                 openSurveyPopup();
                 return;
