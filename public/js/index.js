@@ -283,6 +283,7 @@ $(function() {
                     return false;
                 }
             }else if(msg.indexOf('@survey') === 0){
+                changeButtonImage(0);
                 openSurveyPopup();
                 return;
             }
@@ -355,6 +356,7 @@ $(function() {
         if(image == 1){
             $('#btnGo img').attr('src','/img/loading.png');
         }else{
+            onProcessing = false;
             $('#btnGo img').attr('src','/img/write.png');
         }
     }
