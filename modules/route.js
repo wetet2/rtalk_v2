@@ -13,6 +13,12 @@ router.get('/', function(req, res) {
     });
 });
 
+
+router.get('/test', function(req, res) {
+    res.render('test.html');
+});
+
+
 router.get('/with/:imgUrl', function(req, res) {
 
     // res.render('index.html');
@@ -53,6 +59,10 @@ router.post('/save', function(req, res, next) {
                     data.link = JSON.parse(fields.inputLinkInfo);
                 }
 
+                if(fields.inputSurvey){
+                    data.survey = JSON.parse(fields.inputSurvey);
+                }
+
                 var imgUrl = '';
                 if (files.inputImage) {
                     var path = files.inputImage.path;
@@ -75,6 +85,35 @@ router.post('/save', function(req, res, next) {
 
 router.post('/getTalks', function(req, res) {
     findAll(res);
+});
+
+router.post('/survey', function(req,res){
+
+    var surItemId = 'survey.'+req.body.itemId+'.cnt';
+    var id = req.body.id;
+
+    console.log("id: "+id);
+    console.log("surItemId: "+surItemId);
+
+    client.connect(dbUrl, function(err, db) {
+        if (err) {
+            throw err;
+        } else {
+            var set = {};
+            set.$inc = {};
+            set.$inc[surItemId] = 1;
+
+            db.collection('talks').update({
+                    _id: new ObjectID(id)
+                }, set,
+                function(err, result) {
+                    res.status(200).send({});
+                    db.close();
+                }
+            );
+        }
+
+    })
 });
 
 router.post('/like', function(req, res) {

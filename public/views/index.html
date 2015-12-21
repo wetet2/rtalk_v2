@@ -13,10 +13,12 @@
     <title>RTalk Fragment</title>
 
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bower_components/jquery-ui/themes/start/jquery-ui.css" rel="stylesheet">
     <link href="/css/carousel.css" rel="stylesheet">
     <link rel="icon" href="/img/favicon.ico">
     <link href="/css/index.css" rel="stylesheet" />
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -43,9 +45,14 @@
         </a>
     </div>
 
+    <div class="survey-btn">
+        <img src="/img/survey20.png" title="Survey" />
+    </div>
+
+
     <div id="divInput">
         <div class="message left">
-            <input type="text" id="inputTextOri" maxlength="150" placeholder="Message...150 characters limit">
+            <input class="main-input" type="text" id="inputTextOri" maxlength="150" placeholder="Message...150 characters limit">
             <div class="attached-image"></div>
         </div>
         <label id="btnImage" class="button-mid bg-color1" title="upload image">
@@ -54,18 +61,78 @@
         <label id="btnGo" class="button-mid no-border bg-color2" title="save message">
             <span><img src="/img/write.png" ></span>
         </label>
-        <form method="post" enctype="multipart/form-data" action="/save">
+        <form id="mainForm" method="post" enctype="multipart/form-data" action="/save">
             <input type="text" name="inputText" id="inputText" />
             <input type="text" name="inputId" id="inputId" />
             <input type="text" name="inputLinkInfo" id="inputLinkInfo" />
+            <input type="text" name="inputSurvey" id="inputSurvey" />
             <input type="submit" id="inputSubmit" />
         </form>
     </div>
 
     <div class="wall-outer">
+
+        <div class="wall" style="position: relative; height: 180px;">
+            <div class="box box-width" id="567230c891932cd30490730c">
+                <div class="message-wrapper">
+                    <p>설문조사 테스트</p>
+                    <div class="sur-box" id="surveyId" total="20">
+                        <div class="sur-item" id="1">
+                            <div class="sur-item-back"></div>
+                            <div class="sur-item-select"></div>
+                            <div class="sur-item-content">
+                                <div class="sur-item-content-text">1. 나는 개발자이다</div>
+                                <div class="sur-item-content-per">5</div>
+                            </div>
+                        </div>
+
+                        <div class="sur-item" id="2">
+                            <div class="sur-item-back"></div>
+                            <div class="sur-item-select"></div>
+                            <div class="sur-item-content">
+                                <div class="sur-item-content-text">2. 나는 개발자가 아니다</div>
+                                <div class="sur-item-content-per">3</div>
+                            </div>
+                        </div>
+
+                        <div class="sur-item"  id="3">
+                            <div class="sur-item-back"></div>
+                            <div class="sur-item-select"></div>
+                            <div class="sur-item-content">
+                                <div class="sur-item-content-text">3. 나는 개발자도 아니다</div>
+                                <div class="sur-item-content-per">7</div>
+                            </div>
+                        </div>
+
+                        <div class="sur-item"  id="4">
+                            <div class="sur-item-back"></div>
+                            <div class="sur-item-select"></div>
+                            <div class="sur-item-content">
+                                <div class="sur-item-content-text">4. 나는 개발자는 아니다</div>
+                                <div class="sur-item-content-per">10</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="box-info">
+                        <div class="box-date">12-17</div>
+                        <div class="box-add-reply">댓글</div>
+                        <div class="box-dislike">Bad
+                            <span>0</span>
+                        </div>
+                        <div class="box-like">Good
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-
+<%- include('survey.html') %>
 
 </body>
 

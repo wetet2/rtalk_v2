@@ -1,0 +1,83 @@
+<div class="modal fade " id="surveyPop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Survey Registration</h4>
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="sur-item-input-outer">
+                    <div class="sur-item-input-label">Subject</div>
+                    <div class="sur-item-input-text">
+                        <input type="text" class="form-control" id="inputSurveySubject" style="background-color: #eeeeee">
+                    </div>
+                </div>
+
+                <div id="divSurItem">
+                    <div class="sur-item-input-outer">
+                        <div class="sur-item-input-label">Item 1</div>
+                        <div class="sur-item-input-text">
+                            <input type="text" class="form-control" id="inputSurveyItem1">
+                        </div>
+                    </div>
+
+                    <div class="sur-item-input-outer">
+                        <div class="sur-item-input-label">Item 2</div>
+                        <div class="sur-item-input-text">
+                            <input type="text" class="form-control" id="inputSurveyItem2">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="float:left" onclick="javascript:AddSurItem();">Add Item</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:SaveSurvey();">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function AddSurItem(){
+        var seq = $('#divSurItem').children().length + 1;
+        var html = '';
+        html = html + '<div class="sur-item-input-outer">'
+        html = html +     '<div class="sur-item-input-label">Item '+ seq +'</div>'
+        html = html +     '<div class="sur-item-input-text">'
+        html = html +         '<input type="text" class="form-control" id="inputSurveyItem' + seq + '">'
+        html = html +     '</div>'
+        html = html + '</div>'
+        $('#divSurItem').append(html);
+    }
+    function SaveSurvey(){
+        var subject = $('#inputSurveySubject').val().trim();
+        var item1 = $('#inputSurveyItem1').val().trim();
+        var item2 = $('#inputSurveyItem2').val().trim();
+        if(subject == '' || item1 == '' || item2 == ''){
+            alert('Subject, Item1, Item2를 모두 입력해주세요');
+            return;
+        }
+
+        $('#inputText').val(subject);
+        var info = {};
+        $('#divSurItem').children().each(function(index){
+            var val = $(this).find(':input').val();
+            if(val.trim() != ''){
+                info['item'+(index+1)] = {text:val, cnt:0};
+            }
+        });
+
+        $('#inputSurvey').val(JSON.stringify(info));
+
+        $('#mainForm').submit();
+    }
+
+    $(function(){
+    })
+</script>

@@ -83,6 +83,11 @@ function drawTalks(data){
                 html = html + '</div>';
             }
         }
+
+        if(data[i].survey){
+            html = html + drawSurvey(data[i]);
+        }
+
         html = html +         '<div class="box-info">'
         html = html +             '<div class="box-date">'+getFormatDate(data[i].date)+'</div>'
         html = html +             '<div class="box-add-reply">댓글</div>'
@@ -97,6 +102,29 @@ function drawTalks(data){
 
     $('.wall-outer').html('');
     $('.wall-outer').append(html);
+}
+
+function drawSurvey(talk){
+
+    var survey = talk.survey;
+    var total = 0;
+    var html = '';
+    for(var key in survey)
+    {
+        html = html + '    <div class="sur-item" id="'+key+'">'
+        html = html + '        <div class="sur-item-back"></div>'
+        html = html + '        <div class="sur-item-select"></div>'
+        html = html + '        <div class="sur-item-content">'
+        html = html + '            <div class="sur-item-content-text">'+survey[key].text+'</div>'
+        html = html + '            <div class="sur-item-content-per">'+survey[key].cnt+'</div>'
+        html = html + '        </div>'
+        html = html + '    </div>'
+        total = total + survey[key].cnt;
+    }
+    // '<div class="sur-box" id="surveyId" total="20">'
+    html = html + '</div>'
+    html = '<div class="sur-box" total="'+ total +'">' + html;
+    return html;
 }
 
 function drawReplies(talk){
