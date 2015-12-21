@@ -4,10 +4,9 @@ var onProcessing = false;
 var carouselInterval = 10000;
 var refreshInteval = 120;
 function startReloadTimer() {
-    //testhoyoon2
-    // setTimeout(function(){
-    //     window.location.reload();
-    // }, refreshInteval * 1000)
+    setTimeout(function(){
+        window.location.reload();
+    }, refreshInteval * 1000)
 }
 
 function init() {
@@ -23,8 +22,6 @@ function init() {
     });
 
     $('.header-img-click').click(function(e) {
-        // var boxId = $(this).closest('.carousel-caption').attr('hash');
-        // window.location.href='/#'+boxId;
         var src = $(this).attr('src');
         window.open(src,'_blank');
     })
@@ -314,12 +311,6 @@ $(function() {
                             submit(msg.replace(link, ''));
                             $('#inputLinkInfo').val('');
                         }
-                        // else if(data.type == 'video'){
-                        //     delete data['thumbnail_height'];
-                        //     delete data['thumbnail_width'];
-                        //     delete data['version'];
-                        //
-                        // }
                         else{
                             normalSubmit(msg);
                         }
@@ -335,18 +326,6 @@ $(function() {
         }
 
     });
-
-
-    // var surItemClick = false;
-    // $('.sur-item').click(function() {
-    //     if(surItemClick == false){
-    //         surItemClick = true;
-    //         clickSurveyItem($(this));
-    //         setTimeout(function(){
-    //             surItemClick = false;
-    //         }, 5000);
-    //     }
-    // });
 
     $('.survey-btn').click(function() {
         openSurveyPopup();
