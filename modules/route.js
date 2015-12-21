@@ -9,10 +9,15 @@ var dbUrl = 'mongodb://localhost:27017/local';
 
 router.get('/', function(req, res) {
     res.render('index.html', {
-        imgUrl: ''
+        auto_refresh: false
     });
 });
 
+router.get('/viewer', function(req, res) {
+    res.render('index.html', {
+        auto_refresh: true
+    });
+});
 
 router.get('/test', function(req, res) {
     res.render('test.html');
@@ -91,10 +96,6 @@ router.post('/survey', function(req,res){
 
     var surItemId = 'survey.'+req.body.itemId+'.cnt';
     var id = req.body.id;
-
-    console.log("id: "+id);
-    console.log("surItemId: "+surItemId);
-
     client.connect(dbUrl, function(err, db) {
         if (err) {
             throw err;

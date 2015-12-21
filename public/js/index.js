@@ -4,9 +4,11 @@ var onProcessing = false;
 var carouselInterval = 10000;
 var refreshInteval = 120;
 function startReloadTimer() {
-    setTimeout(function(){
-        window.location.reload();
-    }, refreshInteval * 1000)
+    if(auto_refresh){
+        setTimeout(function(){
+            window.location.reload();
+        }, refreshInteval * 1000)
+    }
 }
 
 function init() {
