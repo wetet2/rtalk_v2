@@ -24,6 +24,9 @@
                         <div class="sur-item-input-text">
                             <input type="text" class="form-control" id="inputSurveyItem1">
                         </div>
+                        <div class="sur-item-input-remove">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
                     </div>
 
                     <div class="sur-item-input-outer">
@@ -31,7 +34,11 @@
                         <div class="sur-item-input-text">
                             <input type="text" class="form-control" id="inputSurveyItem2">
                         </div>
+                        <div class="sur-item-input-remove">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
@@ -44,6 +51,24 @@
 </div>
 
 <script>
+
+    function removeSurItem(surItem){
+        var itemName = surItem.children('.sur-item-input-label').text();
+        var itemId = itemName.substring(itemName.length-1);
+        if(itemId == 1 || itemId == 2){
+            alert('첫번째와 두번째 아이템은 삭제할 수 없습니다');
+        } else{
+            surItem.remove();
+            renameSurItem();
+        }
+    }
+
+    function renameSurItem(){
+        $('#divSurItem').children().each(function(index){
+            $(this).children('.sur-item-input-label').text('Item '+(index+1));
+        });
+    }
+
     function AddSurItem(){
         var seq = $('#divSurItem').children().length + 1;
         var html = '';
@@ -52,8 +77,19 @@
         html = html +     '<div class="sur-item-input-text">'
         html = html +         '<input type="text" class="form-control" id="inputSurveyItem' + seq + '">'
         html = html +     '</div>'
+        html = html + '    <div class="sur-item-input-remove">'
+        html = html + '        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'
+        html = html + '    </div>'
         html = html + '</div>'
         $('#divSurItem').append(html);
+
+        makeEventSurItemRemove();
+    }
+
+    function makeEventSurItemRemove(){
+        $('.sur-item-input-remove span').click(function(){
+            removeSurItem($(this).closest('.sur-item-input-outer'));
+        });
     }
     function SaveSurvey(){
         var subject = $('#inputSurveySubject').val().trim();

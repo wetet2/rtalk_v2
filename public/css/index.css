@@ -7,16 +7,7 @@
     box-shadow: 0 2px 8px rgba(93, 91, 91, 0.4);
     word-wrap: break-word;
 }
-/*@media (min-width: 360px) {
-    .box {
-        width: 43.5%;
-        background: rgb(255, 255, 255);
-        margin: 10px 10px 10px 10px;
-        border-radius: 2px;
-        box-shadow: 0 2px 8px rgba(93, 91, 91, 0.4);
-        word-wrap: break-word;
-    }
-}*/
+
 @media (min-width: 508px) {
     .box {
         width: 45.8%;
@@ -41,10 +32,9 @@
 }
 @media (min-width: 768px) {
     .box {
-        width: 30.2%;
+        width: 44.5%;
         background: rgb(255, 255, 255);
         margin: 10px 10px 10px 10px;
-        /*padding: 5px 5px 2px 5px;*/
         border-radius: 2px;
         box-shadow: 0 2px 8px rgba(93, 91, 91, 0.4);
         word-wrap: break-word;
@@ -458,6 +448,18 @@
     height: 34px;
     left: 80px;
     right: 15px;
+}
+.sur-item-input-remove{
+    position: absolute;
+    float: right;
+    right: 22px;
+    /*top: 5px;*/
+    padding-top: 8px;
+    z-index: 10000;
+}
+
+.sur-item-input-remove span{
+    cursor: pointer;
 }
 .modal-header{
     background-color: #337ab7;

@@ -137,6 +137,8 @@ function init() {
         }
     });
 
+    makeEventSurItemRemove();
+
     initMasonry();
 
 }
