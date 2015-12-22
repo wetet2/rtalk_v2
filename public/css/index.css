@@ -6,6 +6,8 @@
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(93, 91, 91, 0.4);
     word-wrap: break-word;
+    
+    
 }
 
 @media (min-width: 508px) {
