@@ -430,7 +430,6 @@
     font-weight: bold;
 }
 
-
 .sur-item-input-outer{
     width: 100%; height: 34px;
     margin-top: 10px;
@@ -449,6 +448,11 @@
     left: 80px;
     right: 15px;
 }
+
+.sur-item-input-subject{
+    background: rgba(255, 255, 160, 0.5);
+}
+
 .sur-item-input-remove{
     position: absolute;
     float: right;
