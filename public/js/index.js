@@ -268,6 +268,7 @@ $(function() {
     });
 
     $('#btnGo').click(function() {
+
         if(!onProcessing){
             changeButtonImage(1);
             onProcessing = true;
@@ -277,7 +278,9 @@ $(function() {
                 return false;
             }
 
+            var isReply = false;
             if(msg.indexOf('@reply:') === 0){
+                isReply = true;
                 var validation = msg.trim().replace('@reply:','');
                 if(validation.trim().length == 0){
                     changeButtonImage(0);
@@ -290,7 +293,7 @@ $(function() {
             }
 
             var link = Autolinker.onlyLink(msg);
-            if(link && link != ''){
+            if(link && link != '' && !isReply){
                 $.ajax({
 
                     type: 'get',
