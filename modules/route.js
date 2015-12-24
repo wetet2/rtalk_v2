@@ -39,8 +39,8 @@ router.get('/with/:imgUrl', function(req, res) {
 router.post('/save', function(req, res, next) {
 
     var fileSize = parseInt(req.headers['content-length']);
-    if (fileSize > 1600000) {
-        res.status(200).send('최대 1.5M 업로드 가능합니다');
+    if (fileSize > 2600000) {
+        res.status(200).send('최대 2.5M 업로드 가능합니다');
     } else {
 
         var form = new formidable.IncomingForm();
