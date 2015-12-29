@@ -150,6 +150,7 @@ function drawReplies(talk){
             html = html +     '</div>'
         }
         html = html + '</div>'
+
         // if(talk.replies.length > 2){
         //     html = html + '<div class="reply-wrapper-all">'
         //     for(var i=talk.replies.length-1 ; i>=0 ; i--){
@@ -181,7 +182,17 @@ function getSurveyMostItem(survey){
             msg = survey[key].text;
         }
     }
-    msg = msg + ' ( '+ mostCnt +' of '+totalCnt+' )';
+    var percent = parseFloat(0);
+    var f1 = parseFloat(mostCnt);
+    var f2 = parseFloat(totalCnt);
+    var percent = f1 / f2 * 100;
+    var compare = parseInt(percent);
+    if(percent.toFixed(1) == compare){
+        msg = msg + ' ( '+ compare +'% )';
+    }else{
+        msg = msg + ' ( '+ percent.toFixed(1) +'% )';
+    }
+    // msg = msg + ' ( '+ mostCnt +' of '+totalCnt+' )';
     return msg;
 }
 
