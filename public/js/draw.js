@@ -172,13 +172,16 @@ function drawReplies(talk){
 
 function getSurveyMostItem(survey){
     var mostCnt = -1;
+    var totalCnt = 0;
     var msg = '';
     for(var key in survey){
+        totalCnt = totalCnt + survey[key].cnt;
         if(mostCnt < survey[key].cnt){
             mostCnt = survey[key].cnt;
             msg = survey[key].text;
         }
     }
+    msg = msg + ' ( '+ mostCnt +' of '+totalCnt+' )';
     return msg;
 }
 
