@@ -281,6 +281,12 @@
     margin-left: 3px;
     font-size: 0.8em;
 }
+.reply-new-img{
+    width: 12px;
+    height: 12px;
+}
+
+
 .arrow-down {
     background-image: url('/img/arrow_down.png');
 }
@@ -465,6 +471,16 @@
 .sur-item-input-remove span{
     cursor: pointer;
 }
+
+.survey-most-item{
+    color: rgb(231, 222, 21);
+}
+
+.survey-most-title{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 .modal-header{
     background-color: #337ab7;
     border-radius: 5px 5px 0 0;

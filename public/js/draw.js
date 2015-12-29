@@ -20,11 +20,18 @@ function drawTop3(data){
             if(data[i].image.length > 0){
                 html = html +             '<img src="'+data[i].image+'" class="header-img-click" align="left">'
             }
-            html = html +             '<div class="header-content"><span>'+data[i].msg
+            html = html +             '<div class="header-content">';
+            if(data[i].survey){
+                html = html +             '<span class="survey-most-title">설문조사:</span><br>';
+            }
+            html = html +                 '<span>' + data[i].msg;
             if(data[i].link){
                 if(data[i].link.type == 'link' || data[i].link.type == 'video'){
                     html = html +               '<br><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.title+'</a>'
                 }
+            }
+            if(data[i].survey){
+                html = html + '<br><span class="survey-most-item"> '+ getSurveyMostItem(data[i].survey) +'</span>';
             }
             html = html +             '</span></div>'
             html = html +         '</div>'
@@ -163,6 +170,17 @@ function drawReplies(talk){
     return html;
 }
 
+function getSurveyMostItem(survey){
+    var mostCnt = -1;
+    var msg = '';
+    for(var key in survey){
+        if(mostCnt < survey[key].cnt){
+            mostCnt = survey[key].cnt;
+            msg = survey[key].text;
+        }
+    }
+    return msg;
+}
 
 var today = new Date();
 function getFormatDate(date){
