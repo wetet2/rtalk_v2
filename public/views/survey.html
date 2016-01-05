@@ -87,9 +87,11 @@
     }
 
     function makeEventSurItemRemove(){
-        $('.sur-item-input-remove span').click(function(){
+        $('.sur-item-input-remove span').unbind();
+        $('.sur-item-input-remove span').bind('click', function(){
             removeSurItem($(this).closest('.sur-item-input-outer'));
-        });
+        })
+        
     }
     function SaveSurvey(){
         var subject = $('#inputSurveySubject').val().trim();
