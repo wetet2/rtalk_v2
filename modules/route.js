@@ -58,9 +58,9 @@ router.post('/save', function(req, res, next) {
                 insertReply(reply, fields.inputId);
 
             } else {
-                console.log(fields);
-                console.log(files);
                 var data = {};
+
+                // 모바일에서 이용시 가끔 데이터가 아무것도 넘어오지 않는다(보통은 이미지 업로드 에러)
                 if(fields.inputText == '' && fields.inputLinkInfo == '' && files.inputImage == undefined){
                     res.status(200).send('입력 데이터가 존재하지 않습니다. 대게,이미지 업로드나 링크 실패로 이 메시지가 보입니다');
                 }else{
