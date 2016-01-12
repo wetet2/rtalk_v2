@@ -58,30 +58,36 @@ router.post('/save', function(req, res, next) {
                 insertReply(reply, fields.inputId);
 
             } else {
+                console.log(fields);
+                console.log(files);
                 var data = {};
-                data.msg = fields.inputText;
-                if(fields.inputLinkInfo){
-                    data.link = JSON.parse(fields.inputLinkInfo);
-                }
+                if(fields.inputText == '' && fields.inputLinkInfo == '' && files.inputImage == undefined){
+                    res.status(200).send('입력 데이터가 존재하지 않습니다. 대게,이미지 업로드나 링크 실패로 이 메시지가 보입니다');
+                }else{
+                    data.msg = fields.inputText;
+                    if(fields.inputLinkInfo){
+                        data.link = JSON.parse(fields.inputLinkInfo);
+                    }
 
-                if(fields.inputSurvey){
-                    data.survey = JSON.parse(fields.inputSurvey);
-                }
+                    if(fields.inputSurvey){
+                        data.survey = JSON.parse(fields.inputSurvey);
+                    }
 
-                var imgUrl = '';
-                if (files.inputImage) {
-                    var path = files.inputImage.path;
-                    path = path.replace('/\\/g', '/');
-                    var fileName = path.substr(path.lastIndexOf('/'), path.length);
-                    imgUrl = '/img/upload' + fileName;
-                }
-                data.image = imgUrl;
-                data.dateStr = getCurrentDateStr();
-                data.date = getCurrentDate();
-                data.like = 0;
-                data.dislike = 0;
+                    var imgUrl = '';
+                    if (files.inputImage) {
+                        var path = files.inputImage.path;
+                        path = path.replace('/\\/g', '/');
+                        var fileName = path.substr(path.lastIndexOf('/'), path.length);
+                        imgUrl = '/img/upload' + fileName;
+                    }
+                    data.image = imgUrl;
+                    data.dateStr = getCurrentDateStr();
+                    data.date = getCurrentDate();
+                    data.like = 0;
+                    data.dislike = 0;
 
-                insertTalk(data);
+                    insertTalk(data);
+                }
             }
             res.redirect('/');
         });
