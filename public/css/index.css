@@ -370,7 +370,7 @@
 }
 
 .sur-box{
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 .sur-item{
@@ -424,6 +424,9 @@
 }
 
 .sur-item-content-text {
+    position: absolute;
+    left: 0px;
+    right: 23px;
     float: left;
     color: rgb(0, 0, 0);
     padding: 5px 10px 5px 10px;
@@ -431,7 +434,7 @@
 .sur-item-content-per {
     display: none;
     float: right;
-    color: rgb(255, 255, 255);
+    color: #f6f3a4;
     padding: 5px 5px 5px 5px;
     font-weight: bold;
 }

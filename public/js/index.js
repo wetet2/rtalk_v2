@@ -137,6 +137,29 @@ function init() {
         }
     });
 
+    $('.sur-box').each(function(index){
+
+        var surItemHeight  = getSurItemMaxHeight(this);
+        $(this).children('.sur-item').each(function(index){
+            $(this).children('.sur-item-back').css('height',surItemHeight);
+            $(this).children('.sur-item-select').css('height',surItemHeight);
+            $(this).css('height',surItemHeight);
+        });
+
+
+    });
+
+    function getSurItemMaxHeight(box){
+        var maxHeight = 0;
+        $(box).children('.sur-item').each(function(index){
+            var height = $(this).children('.sur-item-content').children('.sur-item-content-text').outerHeight()
+            if(maxHeight < height){
+                maxHeight = height;
+            }
+        });
+        return maxHeight;
+    }
+
     makeEventSurItemRemove();
 
     initMasonry();
