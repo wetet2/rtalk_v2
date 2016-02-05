@@ -13,7 +13,8 @@ function startReloadTimer() {
 
 function init() {
 
-    // alert($(window).height());
+    //alert($(window).height());
+    alert($(window).width());
 
     $('.box-add-reply').click(function() {
         var id = $(this).closest('.box').attr('id')
