@@ -78,7 +78,9 @@ function drawTalks(data){
                     html = html + '    </div>'
                 }
                 html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
-                html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
+                if(data[i].link.description){
+                    html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
+                }
                 html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
                 html = html + '</div>'
             }else if(data[i].link.type == 'video'){
