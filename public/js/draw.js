@@ -17,7 +17,7 @@ function drawTop3(data){
             html = html + '<div class="item '+active+'">'
             html = html +     '<div class="container">'
             html = html +         '<div class="carousel-caption" hash="'+data[i]._id+'">'
-            if(data[i].image.length > 0){
+            if(data[i].image.length > 0 && data[i].image != ''){
                 html = html +             '<img src="'+data[i].image+'" class="header-img-click" align="left">'
             }
             html = html +             '<div class="header-content">';
@@ -72,9 +72,11 @@ function drawTalks(data){
                 // html = html + '    <div class="link-provider">'
                 // html = html + '        <img src="/img/provider.png">'+data[i].link.provider_name
                 // html = html + '    </div>'
-                html = html + '    <div class="link-thumbnail">'
-                html = html + '        <img src="'+data[i].link.thumbnail_url+'" onload="initMasonry()">'
-                html = html + '    </div>'
+                if(data[i].link.thumbnail_url && data[i].link.thumbnail_url != ''){
+                    html = html + '    <div class="link-thumbnail">'
+                    html = html + '        <img src="'+data[i].link.thumbnail_url+'" onload="initMasonry()">'
+                    html = html + '    </div>'
+                }
                 html = html + '    <div class="link-title">'+data[i].link.title+'</div>'
                 html = html + '    <div class="link-desc">'+data[i].link.description+'</div>'
                 html = html + '    <div class="link-go"><a href="'+data[i].link.url+'" target="_blank" >'+data[i].link.provider_name+'에서 보기 ></a></div>'
